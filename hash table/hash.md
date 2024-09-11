@@ -1,0 +1,3 @@
+```
+index = hash(key) % capacity
+```

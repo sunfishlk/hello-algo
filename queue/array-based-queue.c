@@ -38,16 +38,19 @@ bool isEmpty(ArrayQueue* queue) {
     return queue->size == 0;
 }
 
-bool insertQueue(ArrayQueue* queue, int value){
-    if (isFull(queue)) return false;
+void insertQueue(ArrayQueue* queue, int value){
+    if(isFull(queue)){
+        return;
+    }
     queue->nums[queue->rear] = value;
     queue->rear = (queue->rear + 1) % queue->capacity;
     queue->size++;
-    return true;
 }
 
 int pop(ArrayQueue* queue){
-    if (isEmpty(queue)) return -1; // 或者其他错误值
+    if(isEmpty(queue)){
+        return -1;
+    }
     int temp = queue->nums[queue->front];
     queue->front = (queue->front + 1) % queue->capacity;
     queue->size--;
